@@ -1,0 +1,28 @@
+#日志配置
+logging:
+  file:
+    path: /usr/local/logs
+    name: ${logging.file.path}/${spring.application.name}.log
+  level:
+    root: info
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
+  logback:
+    rollingpolicy:
+      max-history: 7
+      max-file-size: 20MB
+      clean-history-on-start: off
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.1.134:10086/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 3
+  instance:
+    prefer-ip-address: on
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+ribbon:
+  eureka:
+    enabled: true

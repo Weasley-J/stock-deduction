@@ -1,0 +1,8 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: registry-service
+  profiles:
+    #运行环境: dev|test|prod
+    active: dev

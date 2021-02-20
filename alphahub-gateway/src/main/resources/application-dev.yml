@@ -1,0 +1,49 @@
+#日志配置
+logging:
+  file:
+    path: d:/data/logs
+    name: ${logging.file.path}/${spring.application.name}.log
+  level:
+    root: info
+  pattern:
+    dateformat: yyyy-MM-dd HH:mm:ss.SSS
+  logback:
+    rollingpolicy:
+      max-history: 7
+      max-file-size: 20MB
+      clean-history-on-start: on
+spring:
+  cloud:
+    gateway:
+      routes:
+        #库存服务路由
+        - id: stock_decrease_route
+          uri: lb://stock-decrease
+          predicates:
+            - Path=/api/stock/**
+          filters:
+            - RewritePath=/api/(?<segment>.*),/$\{segment}
+        #后台管理路由
+        - id: admin_route
+          uri: lb://admin-service
+          #前端项目: /api
+          predicates:
+            #将当前请求转发到http://127.0.0.1:8080/api/1
+            - Path=/api/**
+            #配置路由过滤器,将当前请求http://127.0.0.1:8080/api/product/1 --> http://127.0.0.1:8080/renren-fast/1
+          filters:
+            - RewritePath=/api/(?<segment>.*),/renren-fast/$\{segment}
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka,http://127.0.0.1:10087/eureka,http://127.0.0.1:10088/eureka
+    fetch-registry: true
+    register-with-eureka: true
+    registry-fetch-interval-seconds: 3
+  instance:
+    prefer-ip-address: on
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 20
+ribbon:
+  eureka:
+    enabled: true
