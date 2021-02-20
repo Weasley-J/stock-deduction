@@ -41,7 +41,7 @@ update table set version = version+1 where id = #{id}
 1. *安装好`MySQL`*
 2. *安装好`Redis`*
 
-- 关键配置
+- Redission核心配置
 
 1. `application.yml`
 
