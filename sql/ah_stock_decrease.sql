@@ -11,9 +11,8 @@
  Target Server Version : 80023
  File Encoding         : 65001
 
- Date: 19/02/2021 23:25:39
+ Date: 22/02/2021 00:46:22
 */
-CREATE DATABASE `ah_stock_decrease` CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_general_ci';
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
@@ -40,10 +39,13 @@ CREATE TABLE `tb_product_stock`  (
   PRIMARY KEY (`id`) USING BTREE,
   INDEX `idx_cid`(`category_id`) USING BTREE COMMENT '分类id索引',
   INDEX `idx_bid`(`brand_id`) USING BTREE COMMENT '品牌id索引'
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '产品库存表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of tb_product_stock
 -- ----------------------------
+INSERT INTO `tb_product_stock` VALUES (1, '苏打水', 12, 245, 200, '分', 5000, '个', 0, '2021-02-20 00:56:53', 'admin', '2021-02-22 00:46:11', NULL, NULL);
+INSERT INTO `tb_product_stock` VALUES (2, '农夫山泉', 31, 195, 600, '分', 352, '个', 0, '2021-02-20 00:56:53', 'admin', '2021-02-20 02:12:50', NULL, NULL);
+INSERT INTO `tb_product_stock` VALUES (3, '雪碧', 12, 245, 300, '分', 86, '个', 0, '2021-02-20 00:56:53', 'admin', NULL, NULL, NULL);
 
 SET FOREIGN_KEY_CHECKS = 1;

@@ -83,13 +83,14 @@ public class ProductStockServiceImpl extends ServiceImpl<ProductStockMapper, Pro
             log.info("=============== 获取分布式锁成功 ================");
 
             ProductStock stock = this.getById(id);
-            stockQuantity = stock.getStockQuantity();
-
             if (ObjectUtils.isNull(stock)) {
                 msg = "商品不存在！！！";
                 log.warn("{}", msg);
                 return msg;
             }
+
+            stockQuantity = stock.getStockQuantity();
+
             // 简单减库存操作 没有重新写其他接口了
             if (orderQuantity > 1) {
                 msg = "限购一件！！！";

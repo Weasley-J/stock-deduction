@@ -358,7 +358,7 @@ http://localhost:10002/api/stock/product/info/1
 
 ```shell
 #windows
-cls && ab -c 15000 -n 15000 "http://127.0.0.1/api/stock/product/decreaseStock/1/1、
+cls && ab -c 15000 -n 15000 "http://127.0.0.1/api/stock/product/decreaseStock/1/1
 
 #Linux
 clear && ab -c 15000 -n 15000 "http://127.0.0.1/api/stock/product/decreaseStock/1/1
