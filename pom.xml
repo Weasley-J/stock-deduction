@@ -18,7 +18,7 @@
     <name>alphahub-stock</name>
     <description>下单减库存DEMO</description>
     <!-- FIXME change it to the project's website -->
-    <url>http://www.example.com</url>
+    <url>https://github.com/Weasley-J/alphahub-stock</url>
 
     <modules>
         <module>alphahub-code-generator</module>
