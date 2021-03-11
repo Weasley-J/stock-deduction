@@ -26,9 +26,9 @@ update table set version = version+1 where id = #{id}
 
 # 2 本文项目实现示例
 
-> ## `Redission`
+> ## `Redisson`
 
-`redis`官方推荐的分布式锁解决方案：[官方PUB发文](https://redis.io/topics/distlock), 也是本文介绍的方案`spring boot + spring coud + redisson`，从`redis`官方文档我们可以看到 `redission`是`redis`在`java`实现中分布式红锁的不二选择。
+`redis`官方推荐的分布式锁解决方案：[官方PUB发文](https://redis.io/topics/distlock), 也是本文介绍的方案`spring boot + spring coud + redisson`，从`redis`官方文档我们可以看到 `Redisson`是`redis`在`java`实现中分布式红锁的不二选择。
 
 ![image-20210220173026981](https://alphahub-test-bucket.oss-cn-shanghai.aliyuncs.com/image/image-20210220173026981.png)
 
@@ -41,7 +41,7 @@ update table set version = version+1 where id = #{id}
 1. *安装好`MySQL`*
 2. *安装好`Redis`*
 
-- Redission核心配置
+- Redisson核心配置
 
 1. `application.yml`
 
@@ -86,7 +86,7 @@ singleServerConfig:
   #单个连接最大订阅数量，默认5
   subscriptionsPerConnection: 5
   #客户端名称
-  clientName: ALPHAHUB_REDISSION_CLIENT1
+  clientName: ALPHAHUB_Redisson_CLIENT1
   address: redis://192.168.40.132:6379
   password: 123456
   database: 6
@@ -138,10 +138,10 @@ clusterServersConfig:
   pingConnectionInterval: 0
   keepAlive: false
   tcpNoDelay: false
-  threads: 16
-  nettyThreads: 32
-  codec: !<org.redisson.codec.MarshallingCodec> { }
-  transportMode: "NIO"
+threads: 16
+nettyThreads: 32
+codec: !<org.redisson.codec.MarshallingCodec> { }
+transportMode: "NIO"
 ```
 
 4. 最终结构
